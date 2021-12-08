@@ -104,3 +104,8 @@ More Details [Scan](./WebPage/src/pages/scan.js)
 - Here is a Screen shot of our NFT.Storage service
 
 <img src="https://i.ibb.co/pwxkPHC/image.png">
+
+## What's Next for NFT Quasar
+
+Developing with EVMOS was easy enough as its EVM works with all the Ethereum-based channels, apis and even other blockchains such as IPFS. Just one small area of opportunity: the faucet was way too small, we had to create quite a number of accounts to farm the Photon needed for the project on testnet and let's say it wasn't fun. Apart from that everything was only configuring our Smart contracts properly and executing our DApp. 
+We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank The Hackatom and Starport teams for this opportunity and also the EVMOS devs for their support on discord.
