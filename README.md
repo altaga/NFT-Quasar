@@ -99,7 +99,6 @@ More details on: [Server](./Server/serverv3.js)
 
 More Details [Scan](./WebPage/src/pages/scan.js)
 
-    code....
 
 - Here is a Screen shot of our NFT.Storage service
 
