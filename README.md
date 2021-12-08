@@ -26,6 +26,31 @@ Enter NFT Quasar, we NFTize collectibles, sneakers, watches and more providing a
 
 # Solution 
 
+## How does it work
+
+An NFT Marketplace but with a twist
+
+1. Check it out it is live: https://www.nftquasar.online/
+
+<img src="https://i.ibb.co/YZWb9r7/Screenshot-from-2021-12-08-00-30-49.png">
+
+<img src="https://i.ibb.co/92Dv6RT/marketplace.png">
+
+2. Mint your offline asset NFT
+
+<img src="https://i.ibb.co/XkBz44J/minto.png">
+
+3. Wait for it to be approved by a third party.
+
+<img src="https://i.ibb.co/k6wLjmf/vlcsnap-2021-12-08-03h26m08s865.png">
+
+4. Now you can scan it on the system!
+
+<img src="https://i.ibb.co/DMq8kk5/approved.png">
+
+### Of course, as it is an NFT you'll know in its history where it has been and who is the real owner!
+
+
 Here is the system's Architecture:
 
 <img src="https://i.ibb.co/26mPX3k/NFT-Quasar-Diagram.png">
