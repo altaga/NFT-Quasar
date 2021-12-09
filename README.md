@@ -1,7 +1,7 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [<img src="https://img.shields.io/badge/View-Website-blue">](https://www.nftquasar.online/) [<img src="https://img.shields.io/badge/View-Video-red">](FALTA VIDEO)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [<img src="https://img.shields.io/badge/View-Website-blue">](https://www.nftquasar.online/) [<img src="https://img.shields.io/badge/View-Video-red">](https://www.youtube.com/watch?v=JxeeY6aaZcw)
 
 #### Live: https://www.nftquasar.online/
-### Main Video!: Pending...
+### Main Video!: https://www.youtube.com/watch?v=JxeeY6aaZcw
 
 # NFT Quasar
 
@@ -64,6 +64,11 @@ Our webpage is made on React, Evmos works as the main focus as it is the manager
 Evmos RPC is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
 
 <img src="https://i.ibb.co/BZqq35Y/image.png">
+
+And YES everything is on testnet and we had to incurr in extreme practices to get the Photon needed for this application.
+As you can see in this video:
+
+### https://youtu.be/taSxikK07qE
 
 ## IPFS/Filecoin:
 
