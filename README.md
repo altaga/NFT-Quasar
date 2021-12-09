@@ -65,7 +65,7 @@ Evmos RPC is the base for Minting, buying, trading and everything Smart Contract
 
 <img src="https://i.ibb.co/BZqq35Y/image.png">
 
-And YES everything is on testnet and we had to incurr in extreme practices to get the Photon needed for this application.
+And YES everything is on testnet and we had to incur in extreme practices to get the Photon needed for this application.
 As you can see in this video:
 
 ### https://youtu.be/taSxikK07qE
