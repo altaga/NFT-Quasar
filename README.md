@@ -63,7 +63,7 @@ Our webpage is made on React, the Metis Stardust testnet works as the main focus
 
 The Metis RPC is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
 
-<img src="https://i.ibb.co/BZqq35Y/image.png">
+<img src="https://i.ibb.co/GV8mQSB/contract.png">
 
 And YES everything is on the Stardust/Rinkerby testnet.
 
