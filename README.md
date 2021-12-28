@@ -55,20 +55,17 @@ Here is the system's Architecture:
 
 <img src="https://i.ibb.co/26mPX3k/NFT-Quasar-Diagram.png">
 
-Our webpage is made on React, Evmos works as the main focus as it is the manager of smart contracts and EVM compatibility with Cosmos. In turn, Evmos RPC manages its interactions between smartcontracts and webpage, Metamask works as our way of signing said contracts and providing the way to mint NFT's. On the storage side we use IPFS/Filecoin in adition with NFT.storage to store our NFT data securely and resiliently and also we use some of their API's to call the CID back.
+Our webpage is made on React, the Metis Stardust testnet works as the main focus as it is the manager of smart contracts and EVM compatibility. In turn, the Metis RPC manages its interactions between smartcontracts and webpage, Metamask works as our way of signing said contracts and providing the way to mint NFT's. On the storage side we use IPFS/Filecoin in adition with NFT.storage to store our NFT data securely and resiliently and also we use some of their API's to call the CID back.
 
 # Technology stack
 
-## Evmos 
+## Metis
 
-Evmos RPC is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
+The Metis RPC is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
 
 <img src="https://i.ibb.co/BZqq35Y/image.png">
 
-And YES everything is on testnet and we had to incur in extreme practices to get the Photon needed for this application.
-As you can see in this video:
-
-### https://youtu.be/taSxikK07qE
+And YES everything is on the Stardust/Rinkerby testnet.
 
 ## IPFS/Filecoin:
 
@@ -100,7 +97,7 @@ More details on: [Server](./Server/serverv3.js)
         }
         let metadata = await clientnft.store(premetadat)
 
-- To access this data we use a Evmos RPC provider, obtaining the NFT IPFS URI directly from the Smart Contract, after that a simple get request will give us the data of the metadata.json.
+- To access this data we use a Metis RPC provider, obtaining the NFT IPFS URI directly from the Smart Contract, after that a simple get request will give us the data of the metadata.json.
 
 More Details [Scan](./WebPage/src/pages/scan.js)
 
@@ -111,8 +108,8 @@ More Details [Scan](./WebPage/src/pages/scan.js)
 
 ## What's Next for NFT Quasar
 
-Developing with EVMOS was easy enough as its EVM works with all the Ethereum-based channels, apis and even other blockchains such as IPFS. Just one small area of opportunity: the faucet was way too small, we had to create quite a number of accounts to farm the Photon needed for the project on testnet and let's say it wasn't fun. Apart from that everything was only configuring our Smart contracts properly and executing our DApp. 
-We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank The Hackatom and Starport teams for this opportunity and also the EVMOS devs for their support on discord.
+Developing with Metis was easy enough as its EVM works with all the Ethereum-based channels, APIs and even other blockchains such as IPFS.
+We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank the Metis team for this opportunity and also the devs for their support on discord.
 
 # References
 
