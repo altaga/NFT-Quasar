@@ -34,19 +34,19 @@ An NFT Marketplace but with a twist
 
 <img src="https://i.ibb.co/YZWb9r7/Screenshot-from-2021-12-08-00-30-49.png">
 
-<img src="https://i.ibb.co/92Dv6RT/marketplace.png">
+<img src="https://i.ibb.co/P4D6Gf6/wheel2.png">
 
-2. Mint your offline asset NFT
+### 2. Mint your offline asset NFT
 
-<img src="https://i.ibb.co/XkBz44J/minto.png">
+<img src="https://i.ibb.co/0BN6pr2/wheel3.png">
 
-3. Wait for it to be approved by a third party.
+### 3. Wait for it to be approved by a third party.
 
-<img src="https://i.ibb.co/k6wLjmf/vlcsnap-2021-12-08-03h26m08s865.png">
+<img src="https://i.ibb.co/G3jR9xJ/Pre-Approve.png">
 
-4. Now you can scan it on the system!
+### 4. Now you can scan it on the system!
 
-<img src="https://i.ibb.co/DMq8kk5/approved.png">
+<img src="https://i.ibb.co/5xycyyP/lastwheel.png">
 
 ### Of course, as it is an NFT you'll know in its history where it has been and who is the real owner!
 
