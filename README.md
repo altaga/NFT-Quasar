@@ -53,7 +53,7 @@ An NFT Marketplace but with a twist
 
 Here is the system's Architecture:
 
-<img src="https://i.ibb.co/26mPX3k/NFT-Quasar-Diagram.png">
+<img src="https://i.ibb.co/s2BMvM2/Esquema.png">
 
 Our webpage is made on React, the Metis Stardust testnet works as the main focus as it is the manager of smart contracts and EVM compatibility. In turn, the Metis RPC manages its interactions between smartcontracts and webpage, Metamask works as our way of signing said contracts and providing the way to mint NFT's. On the storage side we use IPFS/Filecoin in adition with NFT.storage to store our NFT data securely and resiliently and also we use some of their API's to call the CID back.
 
