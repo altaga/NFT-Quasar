@@ -88,7 +88,7 @@ contract MyToken is ERC721URIStorage {
         actualBid = 0;
         flag = false;
         payable(nftRev).transfer(address(this).balance/50); // Commition
-        payable(owner).transfer(address(this).balance); // send MATIC to the seller
+        payable(owner).transfer(address(this).balance); // send Metis to the seller
         owner = actualAddress;
     }
 }

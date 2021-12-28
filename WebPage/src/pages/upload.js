@@ -206,7 +206,7 @@ class Upload extends Component {
                             this.props.my_activetab.activetab === 2 &&
                             <div style={{ paddingTop: "5vh" }}>
                                 <div>
-                                    Deploy NFT contract on Cosmos through Evmos.
+                                    Deploy NFT contract on Metis.
                                 </div>
                                 <br />
                                 <textarea id="upload1" style={{ fontSize: "1rem", width: "60vw", height: "40vh", overflowY: "scroll", overflowX: "scroll", resize: "none", color:"white",backgroundColor:"#1e1e1e", padding:"10px" }} value={content()} readOnly />
@@ -227,7 +227,7 @@ class Upload extends Component {
                                 <br />
                                 <br />
                                 <div>
-                                    Waiting for Cosmos network
+                                    Waiting for Metis network
                                 </div>
                                 <br />
                                 <div>
@@ -250,7 +250,7 @@ class Upload extends Component {
                                     <p />
                                     <LazyLoadImage className="quasarButton" style={{borderRadius: "10px"}} width="256" height="256" alt="NFT Loading..." src={this.props.my_ipfslink.ipfslink.nftaws} />
                                     <p />
-                                    <Input type="number" name="price" placeholder="Photon price" onChange={(event) => {
+                                    <Input type="number" name="price" placeholder="Metis price" onChange={(event) => {
                                         if (event.target.value >= 0.0001) {
                                             this.setState({ mintButton: false });
                                             this.setState({ price: event.target.value })
@@ -258,7 +258,7 @@ class Upload extends Component {
                                             this.setState({ mintButton: true });
                                         }
                                     }} />
-                                    {`Photon value: ${this.state.price}`}
+                                    {`Metis value: ${this.state.price}`}
                                     <p />
                                     <Button className="quasarButton" disabled={this.state.mintButton} id="upload3" color="primary" style={{ fontSize: "1.5rem", borderRadius: "10px", background: ` #000` }} onClick={() => {
                                         this.setState({ mintButton: true });
@@ -277,7 +277,7 @@ class Upload extends Component {
                                     <LazyLoadImage className="quasarButton" style={{borderRadius: "10px"}} width="400" height="400" alt="NFT Loading..." src={this.props.my_ipfslink.ipfslink.nftaws} />
                                 </div>
                                 <div style={{ paddingTop: "3vh" }}>
-                                    <Button className="quasarButton" style={{ borderRadius: "25px 0px 0px 25px", fontSize: "1.5rem", borderRight: "1px solid black", background: ` #000` }} onClick={() => window.open(this.state.finalUrl, "_blank")}>View on EvmosScan</Button>
+                                    <Button className="quasarButton" style={{ borderRadius: "25px 0px 0px 25px", fontSize: "1.5rem", borderRight: "1px solid black", background: ` #000` }} onClick={() => window.open(this.state.finalUrl, "_blank")}>View on Metis Explorer</Button>
                                     {
                                         console.log(this.state.finalUrl)
                                     }

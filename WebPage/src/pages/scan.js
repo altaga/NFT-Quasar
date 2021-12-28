@@ -256,7 +256,7 @@ class Scan extends Component {
                                                                             {owner.event}
                                                                         </Col>
                                                                         <Col>
-                                                                            {owner.value / 1000000000000000000} MATIC
+                                                                            {owner.value / 1000000000000000000} Metis
                                                                         </Col>
                                                                         <Col>
                                                                             <a href={`https://evm.evmos.org/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>

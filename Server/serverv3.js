@@ -92,7 +92,7 @@ function getSnapshotFromVideo(uri, name) {
 
 app.get('/home', (req, res) => {
   if (check(req)) {
-    res.send('Hello From NFT Polygon Server');
+    res.send('Hello From NFT Metis Server');
   }
   else {
     res.status(401).send("Unauthorized");
@@ -130,7 +130,7 @@ app.post('/upload-NFT-Storage', async (req, res) => {
         }
         let metadata = await clientnft.store(premetadat)
         const params = {
-          Bucket: 'nft-polygon', // pass your bucket name
+          Bucket: 'nft-metis', // pass your bucket name
           Key: dateName, // file will be saved as 
           Body: file,
           ACL: 'public-read',
