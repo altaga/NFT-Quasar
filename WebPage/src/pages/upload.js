@@ -109,7 +109,7 @@ class Upload extends Component {
                 .headers({
                     'pubkey': this.props.my_pubkey.pubkey,
                     'data': JSON.stringify(this.props.my_nft.nft),
-                    'etherscan': `https://evm.evmos.org/tx/${hash}`,
+                    'etherscan': `https://stardust-explorer.metis.io/tx/${hash}`,
                     'contract': this.props.my_contracturl.contracturl,
                     'aws': this.props.my_ipfslink.ipfslink.nftaws
                 })
@@ -117,7 +117,7 @@ class Upload extends Component {
                     if (res.error) throw new Error(res.error);
                     this.setState({
                         loading: false,
-                        finalUrl: `https://evm.evmos.org/tx/${hash}`
+                        finalUrl: `https://stardust-explorer.metis.io/tx/${hash}`
                     });
                 });
         }).on('confirmation', () => { this.props.set_activetab_action(6) })
@@ -231,7 +231,7 @@ class Upload extends Component {
                                 </div>
                                 <br />
                                 <div>
-                                    <a href={`https://evm.evmos.org/address/${this.props.my_contracturl.contracturl}`} target="_blank" rel="noopener noreferrer">
+                                    <a href={`https://stardust-explorer.metis.io/address/${this.props.my_contracturl.contracturl}`} target="_blank" rel="noopener noreferrer">
                                         {this.props.my_contracturl.contracturl}
                                     </a>
                                 </div>

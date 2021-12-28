@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import maticToken from "../assets/matic-token.png"
 import { connect } from 'react-redux';
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://ethereum.rpc.evmos.dev");
+const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
 
 function stringToLowerCase(str) {
   return str.toLowerCase();
@@ -160,7 +160,7 @@ class Artist extends Component {
                     this.props.my_pubkey.pubkey === this.props.match.params.pub &&
                     <Button className="quasarButton" disabled={!this.state.buttonDisabled} style={{ width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={this.toogleStateOrders}>{this.state.LabelOrder}</Button>
                   }
-                  <Button className="quasarButton" style={{ marginLeft: "10px", width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://evm.evmos.org/address/${this.props.match.params.pub}`, "_blank")}> View on Etherscan</Button>
+                  <Button className="quasarButton" style={{ marginLeft: "10px", width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.props.match.params.pub}`, "_blank")}> View on Etherscan</Button>
                 </Col>
                 {
                   this.props.my_pubkey.pubkey === this.props.match.params.pub &&

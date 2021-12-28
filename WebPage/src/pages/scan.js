@@ -12,7 +12,7 @@ import logoETH from '../assets/logo-ether.png'
 import { abi } from '../contracts/nftContract';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://ethereum.rpc.evmos.dev");
+const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
 
 function ipfsTohtml(uri) {
     let substring = uri.substring(0, uri.lastIndexOf('/')).replace("ipfs://", 'https://')
@@ -218,7 +218,7 @@ class Scan extends Component {
                                                         <p />
                                                         <Row>
                                                             <Col>
-                                                                <Button className="quasarButton" style={{ width: "60%", height: "100%", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://evm.evmos.org/address/${this.state.address}`, "_blank")}>
+                                                                <Button className="quasarButton" style={{ width: "60%", height: "100%", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.state.address}`, "_blank")}>
                                                                     <div style={{ fontSize: "0.8rem", fontWeight: "bolder" }}>
                                                                         View on
                                                                     </div>
@@ -259,10 +259,10 @@ class Scan extends Component {
                                                                             {owner.value / 1000000000000000000} Metis
                                                                         </Col>
                                                                         <Col>
-                                                                            <a href={`https://evm.evmos.org/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
+                                                                            <a href={`https://stardust-explorer.metis.io/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
                                                                         </Col>
                                                                         <Col>
-                                                                            <a href={`https://evm.evmos.org/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
+                                                                            <a href={`https://stardust-explorer.metis.io/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
                                                                         </Col>
                                                                         <Col>
                                                                             {timestampToDate(Date.parse(owner.block_timestamp))}

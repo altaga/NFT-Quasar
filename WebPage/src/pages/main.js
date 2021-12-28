@@ -20,7 +20,7 @@ import prods from '../assets/prods.png';
 import photon from '../assets/photon.png';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://ethereum.rpc.evmos.dev");
+const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
 
 function shuffle(inArray) {
   let tempArray = inArray;

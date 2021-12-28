@@ -10,7 +10,7 @@ import Header from '../components/header';
 import { abi } from '../contracts/nftContract';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://ethereum.rpc.evmos.dev");
+const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
 
 const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length
 

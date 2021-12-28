@@ -18,7 +18,7 @@ import QRCode from "react-qr-code";
 import photon from '../assets/photon.png';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://ethereum.rpc.evmos.dev");
+const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
 
 function timestampToDate(timestamp) {
     return new Date(timestamp).toLocaleString()
@@ -326,10 +326,10 @@ class Nft extends Component {
                                                                     {owner.value / 1000000000000000000} Metis
                                                                 </Col>
                                                                 <Col>
-                                                                    <a href={`https://evm.evmos.org/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
+                                                                    <a href={`https://stardust-explorer.metis.io/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
                                                                 </Col>
                                                                 <Col>
-                                                                    <a href={`https://evm.evmos.org/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
+                                                                    <a href={`https://stardust-explorer.metis.io/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
                                                                 </Col>
                                                                 <Col>
                                                                     {timestampToDate(Date.parse(owner.block_timestamp))}
@@ -438,7 +438,7 @@ class Nft extends Component {
                                                                                     </Col>
                                                                                     <Col style={{ fontSize: "1.2rem" }}>
                                                                                         {`Sold to:`}
-                                                                                        <a href={`https://evm.evmos.org/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
+                                                                                        <a href={`https://stardust-explorer.metis.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
                                                                                             <div>
                                                                                                 {`${this.state.actualAddress.substring(0, 21)}`}
                                                                                             </div>
@@ -456,7 +456,7 @@ class Nft extends Component {
                                                                                     </Col>
                                                                                     <Col style={{ fontSize: "1.2rem" }}>
                                                                                         {`Bid from:`}
-                                                                                        <a href={`https://evm.evmos.org/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
+                                                                                        <a href={`https://stardust-explorer.metis.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
                                                                                             <div>
                                                                                                 {`${this.state.actualAddress.substring(0, 21)}`}
                                                                                             </div>
@@ -475,7 +475,7 @@ class Nft extends Component {
                                                                         </Col>
                                                                         <Col style={{ fontSize: "1.2rem" }}>
                                                                             {`Mint from:`}
-                                                                            <a style={{ color: "yellow" }} href={`https://evm.evmos.org/address/${this.props.match.params.pub}`} target="_blank" rel="noopener noreferrer">
+                                                                            <a style={{ color: "yellow" }} href={`https://stardust-explorer.metis.io/address/${this.props.match.params.pub}`} target="_blank" rel="noopener noreferrer">
                                                                                 <div>
                                                                                     {`${this.props.match.params.pub.substring(0, 21)}`}
                                                                                 </div>
@@ -493,7 +493,7 @@ class Nft extends Component {
                                                 <br />
                                                 <Row>
                                                     <Col>
-                                                        <Button className="quasarButton" style={{ width: "60%", height: "100%", borderWidth: "1px", borderRadius: "10px", fontSize: "1.5rem", background: `#000`, color: "white", padding: "10px" }} onClick={() => window.open(`https://evm.evmos.org/address/${this.state.contract}`, "_blank")}>
+                                                        <Button className="quasarButton" style={{ width: "60%", height: "100%", borderWidth: "1px", borderRadius: "10px", fontSize: "1.5rem", background: `#000`, color: "white", padding: "10px" }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.state.contract}`, "_blank")}>
                                                             <div style={{ fontSize: "0.8rem", fontWeight: "bolder" }}>
                                                                 View on
                                                             </div>
