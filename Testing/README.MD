@@ -55,3 +55,4 @@ Al presionar el boton de Approve aparecera un letrero donde apareceran las confi
 
 Una vez terminadas las confirmaciones, deberias ver el TMetis agregado en tu Stardust Rinkeby Testnet.
 
+<img src="https://i.ibb.co/xjQQYSx/image.png">
