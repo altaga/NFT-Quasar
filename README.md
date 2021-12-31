@@ -106,6 +106,25 @@ More Details [Scan](./WebPage/src/pages/scan.js)
 
 <img src="https://i.ibb.co/pwxkPHC/image.png">
 
+## Draft Budget
+
+For the project to become eventually self sufficient after launch it not only needs more features, but as we are dealing with real assets, we need partnerships to feed those assets (companies in this case such as Stockx or Goat, or perhaps some others that need to digitize its assets).
+
+Regarding the main topic, the cost of building an NFT marketplace varies for several reasons. In short, the price range depends on the amount of work to be done. With a ready to install system, or in our case an already working prototype, the cost will be lower.
+
+Of course, we must take into consideration that this is a project with a higher level of complexity than your standard NFT marketplace and it also operates in two fronts. 
+
+Thankfully enterprises such a CMARIX (https://www.cmarix.com/)have already done an example of the costs that will be taken for a project of this kind:
+
+<img src="https://i.ibb.co/0y8QPG6/budget.png">
+
+From our total of almost $48k USD we can take almost half of that development cost at first, of course because we have already done the heavy lifting during this hackathon! That leaves us at $24,000USd for the finishing touches of the platform depending on the partnerships we can get. That leads us to the cost of getting the first partnerships.
+
+Depending on the reach we want this to have it is imperative to get the first partnerships through a win-win agreement with the other part, whichever company we court. This could be achieved at first by working on-tandem without outsourcing the cost to that partner and by increasing our runway for several months through investment, funding, and grants. If we take an approximate cost of $50K USD as previously discussed, every single partner we get will indeed expand on that cost. For the sake of argument let's say we get three partners, so the operational costs would rise in essence to $200k USD, but that would mean a very advanced product with several replicable features. 
+
+So, the plan for the initial phase would be to secure $50k USD whether it is through grants or other types of funding, secure one initial partner for a Beta run and from that one intent and find product market fit. If the test run is positive, we would scale that solution, of course, handling the same costs but exploring on different future business models.
+
+
 ## What's Next for NFT Quasar
 
 Developing with Metis was easy enough as its EVM works with all the Ethereum-based channels, APIs and even other blockchains such as IPFS.
