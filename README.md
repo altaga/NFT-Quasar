@@ -1,7 +1,7 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [<img src="https://img.shields.io/badge/View-Website-blue">](https://www.nftquasar.online/) [<img src="https://img.shields.io/badge/View-Video-red">](https://www.youtube.com/watch?v=JxeeY6aaZcw)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [<img src="https://img.shields.io/badge/View-Website-blue">](https://www.nftquasar.online/) [<img src="https://img.shields.io/badge/View-Video-red">](https://www.youtube.com/watch?v=j819PrCy8Zw)
 
 #### Live: https://www.nftquasar.online/
-### Main Video!: https://www.youtube.com/watch?v=JxeeY6aaZcw
+### Main Video!: https://www.youtube.com/watch?v=j819PrCy8Zw
 
 # NFT Quasar
 
