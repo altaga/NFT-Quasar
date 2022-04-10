@@ -8,11 +8,12 @@ import { set_activetab_action } from '../redux/actions/syncActions/setActiveTaba
 import autoBind from 'react-autobind';
 import Header from '../components/header';
 import QrReader from 'react-qr-reader'
-import logoETH from '../assets/logo-ether.png'
+import logoETH from '../assets/explorer.png'
+import meterLogo from '../assets/meterLogo.png';
 import { abi } from '../contracts/nftContract';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 function ipfsTohtml(uri) {
     let substring = uri.substring(0, uri.lastIndexOf('/')).replace("ipfs://", 'https://')
@@ -35,18 +36,23 @@ class Scan extends Component {
             loading: false,
             res: "",
             address: "",
-            owners: []
+            owners: [],
+            owner: "",
+            price: "",
+            date: "",
         }
         autoBind(this);
         this.unirest = require('unirest');
     }
 
     componentDidMount() {
+/*
         this.setState({
             spaceQR: "none",
             loading: true
         })
-        this.checkDisplay("0x1bAD5B73009d9dCd6bb451ff36812A94a14cea9f")
+        this.checkDisplay("0x36Faa4Bc3FA296d5eFd522A3BBf2918d27359040")
+*/
     }
 
     handleScan(data) {
@@ -63,7 +69,14 @@ class Scan extends Component {
         let self = this;
         const mint_contract = new dataweb3.eth.Contract(abi(), addr);
         mint_contract.methods.price().call().then(price => {
-            console.log(price)
+            self.setState({
+                price: price
+            })
+        });
+        mint_contract.methods.owner().call().then(owner => {
+            self.setState({
+                owner: owner
+            })
         });
         mint_contract.methods.tokenURI().call().then(URI => {
             console.log(URI)
@@ -75,60 +88,12 @@ class Scan extends Component {
                         spaceQR: "none",
                         loading: false,
                         res: res.body,
-                        address: addr
+                        address: addr,
+                        date: res.body.attributes[0].release_date
                     })
                 });
 
         });
-        /*
-        this.unirest('GET', `https://deep-index.moralis.io/api/v2/nft/${addr}?chain=mumbai&format=hex&order=DESC`)
-            .headers({
-                'accept': 'application/json',
-                'X-API-Key': 'm9N2QaqpjstRatg7qJFFMebq6qrggD1jSpsV0NlnelPOKd4wp3wvGNV5T7xC5kUF'
-            })
-            .end(function (res) {
-                if (res.error) throw new Error(res.error);
-                self.setState({
-                    spaceQR: "none",
-                    loading: false,
-                    res: JSON.parse(res.body.result[0].metadata),
-                    address: addr
-                })
-            });
-        this.unirest('GET', `https://deep-index.moralis.io/api/v2/${addr}?chain=mumbai`)
-            .headers({
-                'accept': 'application/json',
-                'X-API-Key': 'm9N2QaqpjstRatg7qJFFMebq6qrggD1jSpsV0NlnelPOKd4wp3wvGNV5T7xC5kUF'
-            })
-            .end(function (res) {
-                if (res.error) throw new Error(res.error);
-                let owners = []
-                let temp = res.body.result
-                for (let i = 0; i < temp.length; i++) {
-                    if (i === temp.length - 1) {
-                        temp[i].event = "Mint"
-                        owners.push(temp[i])
-                    }
-                    else if (temp[i].value > "0") {
-                        temp[i].event = "Transfer"
-                        owners.push(temp[i])
-                    }
-                }
-                owners = owners.reverse()
-                let ownArr = []
-                for (let i = 0; i < owners.length; i++) {
-                    ownArr.push(owners[i].from_address)
-                }
-                for (let i = 1; i < owners.length; i++) {
-                    owners[i].from_address = ownArr[i - 1]
-                    owners[i].to_address = ownArr[i]
-                }
-                owners = owners.reverse()
-                self.setState({
-                    owners: owners
-                })
-            });
-            */
     }
 
     handleError(err) {
@@ -152,13 +117,13 @@ class Scan extends Component {
         return (
             <div className="App">
                 <Header />
-                <div className="body-style3" style={{ fontSize: "1.5rem" }} id="body-style">
+                <div className="body-style3" style={{ fontSize: "1.5rem" }}>
                     <div style={{ padding: "20px" }}>
                         <Row md="2">
-                            <Col xs="6">
+                            <Col xs="5">
                                 {
                                     this.state.spaceQR === "inline" ?
-                                        <div style={{ width: "80%" }} className="center-element">
+                                        <div style={{ width: "80%" }}>
                                             <Input style={previewStyle} onChange={this.camSelect} type="select" name="select" id="cameraSelect">
                                                 {
                                                     this.state.devices.map((number, index) => <option key={index}>{number}</option>)
@@ -173,15 +138,17 @@ class Scan extends Component {
                                             />
                                         </div>
                                         :
-                                        <div style={{ width: "40%" }} className="center-element">
+                                        <div>
                                             {
                                                 this.state.res !== "" &&
-                                                <img className="quasarButton" style={{ borderRadius: "10px" }} src={ipfsTohtml(this.state.res.image)} />
+                                                <img 
+                                                width= "70%"
+                                                className="quasarButton" style={{ borderRadius: "10px" }} src={ipfsTohtml(this.state.res.image)} />
                                             }
                                         </div>
                                 }
                             </Col>
-                            <Col xs="6">
+                            <Col xs="7">
                                 <div>
                                     {
                                         this.state.spaceQR === "inline" ?
@@ -192,14 +159,19 @@ class Scan extends Component {
                                                 {
                                                     this.state.res !== "" &&
                                                     <div>
-                                                        <Card className="quasarButton" style={{ fontSize: "1.5rem",backgroundColor:"#4d0080"  }}>
+                                                        <Card className="quasarButton" style={{ fontSize: "1.5rem", backgroundColor: "#4d0080" }}>
                                                             <CardHeader>
-                                                                Product Name: {this.state.res.name}
+                                                                {this.state.res.name}
                                                                 <p />
-
+                                                                On sale for: {`${dataweb3.utils.fromWei(this.state.price, "ether").substring(0, 6)}`}
+                                                                <>
+                                                                    &nbsp;
+                                                                </>
+                                                                <img width="30px" src={meterLogo}></img>
+                                                                <p />
                                                             </CardHeader>
                                                             <CardBody>
-                                                                Description: {this.state.res.description}
+                                                                {this.state.res.description}
                                                                 <p />
                                                             </CardBody>
                                                             <CardFooter>
@@ -213,12 +185,10 @@ class Scan extends Component {
                                                                 </Row>
                                                             </CardFooter>
                                                         </Card>
-                                                        <p />
-                                                        <div className="myhr-header" />
-                                                        <p />
+                                                        <div className="myhr2" style={{ marginTop: "5vh", marginBottom: "5vh" }} />
                                                         <Row>
                                                             <Col>
-                                                                <Button className="quasarButton" style={{ width: "60%", height: "100%", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.state.address}`, "_blank")}>
+                                                                <Button className="quasarButton" style={{ width: "60%", height: "100%", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://scan-warringstakes.meter.io/address/${this.state.address}`, "_blank")}>
                                                                     <div style={{ fontSize: "0.8rem", fontWeight: "bolder" }}>
                                                                         View on
                                                                     </div>
@@ -229,10 +199,9 @@ class Scan extends Component {
                                                                 <Button className="quasarButton" style={{ width: "60%", height: "100%", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(this.state.res.external_url, "_blank")}>Brand URL</Button>
                                                             </Col>
                                                         </Row>
-                                                        <div className="myhr-header" />
-                                                        <p />
-                                                        <Card className="quasarButton" style={{ fontSize: "1rem",backgroundColor:"#4d0080"  }}>
-                                                            <Row md={5}>
+                                                        <div className="myhr2" style={{ marginTop: "5vh", marginBottom: "5vh" }} />
+                                                        <Card className="quasarButton" style={{ fontSize: "1rem", backgroundColor: "#4d0080" }}>
+                                                            <Row md={4}>
                                                                 <Col>
                                                                     Event
                                                                 </Col>
@@ -243,33 +212,27 @@ class Scan extends Component {
                                                                     From
                                                                 </Col>
                                                                 <Col>
-                                                                    To
-                                                                </Col>
-                                                                <Col>
-                                                                    Date
+                                                                    Release Date
                                                                 </Col>
                                                             </Row>
-                                                            {
-                                                                this.state.owners.map((owner, index) =>
-                                                                    <Row md={5} key={index}>
-                                                                        <Col>
-                                                                            {owner.event}
-                                                                        </Col>
-                                                                        <Col>
-                                                                            {owner.value / 1000000000000000000} Metis
-                                                                        </Col>
-                                                                        <Col>
-                                                                            <a href={`https://stardust-explorer.metis.io/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
-                                                                        </Col>
-                                                                        <Col>
-                                                                            <a href={`https://stardust-explorer.metis.io/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
-                                                                        </Col>
-                                                                        <Col>
-                                                                            {timestampToDate(Date.parse(owner.block_timestamp))}
-                                                                        </Col>
-                                                                    </Row>
-                                                                )
-                                                            }
+                                                            <Row md={4}>
+                                                                <Col>
+                                                                    {"Mint"}
+                                                                </Col>
+                                                                <Col>
+                                                                    {this.state.price / 1000000000000000000}  <>
+                                                                        &nbsp;
+                                                                    </>
+                                                                    <img width="30px" src={meterLogo}></img>
+                                                                </Col>
+                                                                <Col>
+                                                                    <a href={`https://scan-warringstakes.meter.io/address/${this.state.owner}`}>{this.state.owner.substring(0, 10)}...
+                                                                    </a>
+                                                                </Col>
+                                                                <Col>
+                                                                    {this.state.date}
+                                                                </Col>
+                                                            </Row>
                                                         </Card>
                                                     </div>
                                                 }

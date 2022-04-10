@@ -17,10 +17,10 @@ import four from "../assets/Icons/4.png"
 import five from "../assets/Icons/5.png"
 import six from "../assets/Icons/6.png"
 import prods from '../assets/prods.png';
-import photon from '../assets/photon.png';
+import meterLogo from '../assets/meterLogo.png';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 function shuffle(inArray) {
   let tempArray = inArray;
@@ -68,7 +68,7 @@ class Main extends Component {
   }
 
   async componentDidMount() {
-    this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
+    this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
       .end((res) => {
         if (res.error) throw new Error(res.error);
         if (res.body.length > 0) {
@@ -160,7 +160,7 @@ class Main extends Component {
                       if (index >= 1 && index < 5) {
                         return (
                           <Col key={index+"productss"} style={{ borderRadius: "50px", padding: "50px" }} xs={6}>
-                            <a href={`/nft/${item.PubKey}?id=${item.Counter}`} style={{ textDecoration: "none" }} target="_blank" target="_blank" onMouseOver={() => {
+                            <a href={`/nft/${item.PubKey}?id=${item.Counter}`} style={{ textDecoration: "none" }} target="_blank" onMouseOver={() => {
                               document.getElementById("product" + index).hidden = false;
                             }}
                               onMouseOut={() => {
@@ -218,7 +218,7 @@ class Main extends Component {
                                       }
                                     </div>
                                     <>&nbsp;</>
-                                    <img width="30px" src={photon}></img>
+                                    <img width="30px" src={meterLogo}></img>
                                   </div>
                                 </CardSubtitle>
                               </Col>

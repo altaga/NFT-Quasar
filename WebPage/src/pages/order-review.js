@@ -25,7 +25,7 @@ class OrderRev extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.my_pubkey.pubkey !== "" && JSON.stringify(prevProps.my_pubkey.pubkey) !== JSON.stringify(this.props.my_pubkey.pubkey)) {
-            this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getOrders')
+            this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getOrders')
                 .headers({
                     'pubkey': this.props.my_pubkey.pubkey
                 })

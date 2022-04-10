@@ -10,7 +10,7 @@ import Header from '../components/header';
 import { abi } from '../contracts/nftContract';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length
 
@@ -36,7 +36,7 @@ class Order extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.my_pubkey.pubkey !== "" && JSON.stringify(prevProps.my_pubkey.pubkey) !== JSON.stringify(this.props.my_pubkey.pubkey)) {
-            this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
+            this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
                 .end((res) => {
                     if (res.error) throw new Error(res.error);
                     if (res.body.length > 0) {
@@ -66,7 +66,7 @@ class Order extends Component {
 
     async getOrdersStatus(pub) {
         let temp = this.state.generalOrders
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
             .headers({
                 'pubkey': pub,
                 'id': 1000000
@@ -92,7 +92,7 @@ class Order extends Component {
     }
 
     async getOneArtist() {
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
             .headers({
                 'pubkey': this.state.selectedArtist
             })
@@ -135,7 +135,7 @@ class Order extends Component {
     }
 
     setOrder() {
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
             .headers({
                 'pubkey': this.state.selectedArtist,
                 'id': 1000000
@@ -147,7 +147,7 @@ class Order extends Component {
                     "pubkey": this.props.my_pubkey.pubkey,
                     "description": this.state.description
                 })
-                this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
+                this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
                     .headers({
                         'pubkey': this.state.selectedArtist,
                         'id': '1000000',

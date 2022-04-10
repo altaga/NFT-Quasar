@@ -9,19 +9,17 @@ import { Grid } from 'react-loading-icons';
 import { set_pubkey_action } from "../redux/actions/syncActions/updatePublicKeyaction"
 import { connect } from 'react-redux';
 import { abi } from '../contracts/nftContract';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import maticToken from "../assets/matic-token.png"
-import logoPoly from '../assets/logo-ether.png'
+import logoPoly from '../assets/explorer.png'
 import nftized from '../assets/nftized.png'
 import pending from '../assets/pending.png'
 import QRCode from "react-qr-code";
-import photon from '../assets/photon.png';
+import meterLogo from '../assets/meterLogo.png';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 function timestampToDate(timestamp) {
-    return new Date(timestamp).toLocaleString()
+    return new Date(timestamp * 1000).toLocaleString()
 }
 
 class Nft extends Component {
@@ -52,7 +50,7 @@ class Nft extends Component {
 
     async componentDidMount() {
         const pub = this.props.match.params.pub;
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
             .headers({
                 'pubkey': pub
             })
@@ -62,9 +60,26 @@ class Nft extends Component {
                     let temp = JSON.parse(res.body[this.url_params.get('id')].Data);
                     temp["awsimage"] = res.body[this.url_params.get('id')].Url;
                     const mint_contract = new dataweb3.eth.Contract(abi(), res.body[this.url_params.get('id')].Contract);
-                    console.log(res.body[this.url_params.get('id')].Contract)
-                    let addr = res.body[0].Contract
-                    let self = this;
+                    console.log("Check")
+                    this.unirest('GET', `https://api.meter.io:4000/api/accounts/${res.body[this.url_params.get('id')].Contract}/txs?page=1&limit=20`)
+                        .headers({
+                            'accept': 'application/json'
+                        })
+                        .end((res) => {
+                            if (res.error) throw new Error(res.error);
+                            let owners = [];
+                            let temp = {
+                                "from_address": "0x0000000000000000000000000000000000000000",
+                                "to_address": res.body.txSummaries[0].origin,
+                                "value": "0",
+                                "block_timestamp": res.body.txSummaries[0].block.timestamp,
+                                "event": "Mint",
+                            }
+                            owners.push(temp);
+                            this.setState({
+                                owners: owners,
+                            });
+                        });
                     /*
                     this.unirest('GET', `https://deep-index.moralis.io/api/v2/${addr}?chain=mumbai`)
                         .headers({
@@ -131,7 +146,7 @@ class Nft extends Component {
 
                 }
             });
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
             .headers({
                 'pubkey': pub,
                 'id': this.url_params.get('id')
@@ -179,7 +194,7 @@ class Nft extends Component {
     }
 
     updateDB() {
-        this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
+        this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
             .headers({
                 'image': this.state.image_url,
                 'long': this.state.long,
@@ -208,23 +223,8 @@ class Nft extends Component {
                                         </div>
                                         <div style={{ opacity: "100%", textAlign: "center", paddingTop: "4vh" }} >
                                             {
-                                                this.props.my_pubkey.pubkey !== "0x50eecbdc306c3e756effb022f8e102ae28294018" ?
-                                                    <>
-                                                        <h3>Review Status:</h3>
-                                                        {
-                                                            this.state.nftrev ?
-                                                                <>
-                                                                    <img width="30%" src={nftized} alt="Card images cap" />
-                                                                    <p />
-                                                                    <QRCode value={this.state.contract} />
-                                                                </>
-                                                                :
-                                                                <>
-                                                                    <img width="60%" src={pending} alt="Card images cap" />
-                                                                </>
-                                                        }
-                                                    </>
-                                                    :
+                                                this.props.my_pubkey.pubkey === "0x793214E59Caa22ef929084c395F2eB1115587fd8".toLowerCase()
+                                                    ?
                                                     <>
                                                         {
                                                             this.state.nftrev ?
@@ -232,7 +232,9 @@ class Nft extends Component {
                                                                     <h3>Review Status:</h3>
                                                                     <img width="40%" src={nftized} alt="Card images cap" />
                                                                     <p />
-                                                                    <QRCode value={this.state.contract} />
+                                                                    <div className="quasarButton" style={{ display: "inline-block", background: "white", padding: "20px" }}>
+                                                                        <QRCode value={this.state.contract} />
+                                                                    </div>
                                                                 </>
                                                                 :
                                                                 <>
@@ -255,6 +257,24 @@ class Nft extends Component {
                                                                 </>
                                                         }
                                                     </>
+                                                    :
+                                                    <>
+                                                        <h3>Review Status:</h3>
+                                                        {
+                                                            this.state.nftrev ?
+                                                                <>
+                                                                    <img width="30%" src={nftized} alt="Card images cap" />
+                                                                    <p />
+                                                                    <div className="quasarButton" style={{ display: "inline-block", background: "white", padding: "20px" }}>
+                                                                        <QRCode value={this.state.contract} />
+                                                                    </div>
+                                                                </>
+                                                                :
+                                                                <>
+                                                                    <img width="60%" src={pending} alt="Card images cap" />
+                                                                </>
+                                                        }
+                                                    </>
                                             }
                                         </div>
                                     </Col>
@@ -273,7 +293,7 @@ class Nft extends Component {
                                                         <>
                                                             &nbsp;
                                                         </>
-                                                        <img width="30px" src={photon}></img>
+                                                        <img width="30px" src={meterLogo}></img>
                                                         <p />
                                                     </CardHeader>
                                                     <CardBody>
@@ -291,7 +311,7 @@ class Nft extends Component {
                                                         </Row>
                                                     </CardFooter>
                                                 </Card>
-                                                <div style={{ marginTop: "5vh", marginBottom: "5vh" }} className="myhr2" />
+                                                <div style={{ marginTop: "5vh", marginBottom: "3.5vh" }} className="myhr2" />
                                                 <p />
                                                 <h3>
                                                     Owners:
@@ -323,16 +343,16 @@ class Nft extends Component {
                                                                     {owner.event}
                                                                 </Col>
                                                                 <Col>
-                                                                    {owner.value / 1000000000000000000} Metis
+                                                                    {dataweb3.utils.fromWei(this.state.price, "ether")} Meter
                                                                 </Col>
                                                                 <Col>
-                                                                    <a href={`https://stardust-explorer.metis.io/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
+                                                                    <a href={`https://scan-warringstakes.meter.io/address/${owner.from_address}`}>{owner.from_address.substring(0, 5)}...{owner.from_address.substring(owner.from_address.length - 5, owner.from_address.length)}</a>
                                                                 </Col>
                                                                 <Col>
-                                                                    <a href={`https://stardust-explorer.metis.io/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
+                                                                    <a href={`https://scan-warringstakes.meter.io/address/${owner.to_address}`}>{owner.to_address.substring(0, 5)}...{owner.to_address.substring(owner.to_address.length - 5, owner.to_address.length)}</a>
                                                                 </Col>
                                                                 <Col>
-                                                                    {timestampToDate(Date.parse(owner.block_timestamp))}
+                                                                    {timestampToDate(owner.block_timestamp)}
                                                                 </Col>
                                                             </Row>
                                                         )
@@ -397,7 +417,7 @@ class Nft extends Component {
                                                                                                 <div>
                                                                                                     &nbsp;
                                                                                                 </div>
-                                                                                                <img width="30px" src={photon}></img>
+                                                                                                <img width="30px" src={meterLogo}></img>
                                                                                             </div>
                                                                                         </Col>
                                                                                         <Col>
@@ -434,11 +454,11 @@ class Nft extends Component {
                                                                                 <>
                                                                                     <Col>
                                                                                         {`Sold by: ${dataweb3.utils.fromWei(this.state.price, "ether")} `}
-                                                                                        <img width="30px" src={photon}></img>
+                                                                                        <img width="30px" src={meterLogo}></img>
                                                                                     </Col>
                                                                                     <Col style={{ fontSize: "1.2rem" }}>
                                                                                         {`Sold to:`}
-                                                                                        <a href={`https://stardust-explorer.metis.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
+                                                                                        <a href={`https://scan-warringstakes.meter.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
                                                                                             <div>
                                                                                                 {`${this.state.actualAddress.substring(0, 21)}`}
                                                                                             </div>
@@ -452,11 +472,11 @@ class Nft extends Component {
                                                                                 <>
                                                                                     <Col>
                                                                                         {`Last Bid: ${dataweb3.utils.fromWei(this.state.price, "ether")} `}
-                                                                                        <img width="30px" src={photon}></img>
+                                                                                        <img width="30px" src={meterLogo}></img>
                                                                                     </Col>
                                                                                     <Col style={{ fontSize: "1.2rem" }}>
                                                                                         {`Bid from:`}
-                                                                                        <a href={`https://stardust-explorer.metis.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
+                                                                                        <a href={`https://scan-warringstakes.meter.io/address/${this.state.actualAddress}`} target="_blank" rel="noopener noreferrer">
                                                                                             <div>
                                                                                                 {`${this.state.actualAddress.substring(0, 21)}`}
                                                                                             </div>
@@ -471,11 +491,11 @@ class Nft extends Component {
                                                                     <Row>
                                                                         <Col>
                                                                             {`Min Bid: ${dataweb3.utils.fromWei(this.state.price, "ether")} `}
-                                                                            <img width="30px" src={photon}></img>
+                                                                            <img width="30px" src={meterLogo}></img>
                                                                         </Col>
                                                                         <Col style={{ fontSize: "1.2rem" }}>
                                                                             {`Mint from:`}
-                                                                            <a style={{ color: "yellow" }} href={`https://stardust-explorer.metis.io/address/${this.props.match.params.pub}`} target="_blank" rel="noopener noreferrer">
+                                                                            <a style={{ color: "yellow" }} href={`https://scan-warringstakes.meter.io/address/${this.props.match.params.pub}`} target="_blank" rel="noopener noreferrer">
                                                                                 <div>
                                                                                     {`${this.props.match.params.pub.substring(0, 21)}`}
                                                                                 </div>
@@ -493,7 +513,7 @@ class Nft extends Component {
                                                 <br />
                                                 <Row>
                                                     <Col>
-                                                        <Button className="quasarButton" style={{ width: "60%", height: "100%", borderWidth: "1px", borderRadius: "10px", fontSize: "1.5rem", background: `#000`, color: "white", padding: "10px" }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.state.contract}`, "_blank")}>
+                                                        <Button className="quasarButton" style={{ width: "100%", height: "100%", borderWidth: "1px", borderRadius: "10px", fontSize: "1.5rem", background: `#000`, color: "white", padding: "10px" }} onClick={() => window.open(`https://scan-warringstakes.meter.io/address/${this.state.contract}`, "_blank")}>
                                                             <div style={{ fontSize: "0.8rem", fontWeight: "bolder" }}>
                                                                 View on
                                                             </div>
@@ -501,7 +521,7 @@ class Nft extends Component {
                                                         </Button>
                                                     </Col>
                                                     <Col>
-                                                        <Button className="quasarButton" style={{ borderWidth: "1px", borderColor: "black", width: "60%", height: "100%", borderRadius: "10px", fontSize: "2.5rem", background: `#000`, color: "white" }} onClick={() => window.open(this.state.data.external_url, "_blank")}>Brand URL</Button>
+                                                        <Button className="quasarButton" style={{ borderWidth: "1px", borderColor: "black", width: "100%", height: "100%", borderRadius: "10px", fontSize: "2.5rem", background: `#000`, color: "white" }} onClick={() => window.open(this.state.data.external_url, "_blank")}>Brand URL</Button>
                                                     </Col>
                                                 </Row>
                                             </div>

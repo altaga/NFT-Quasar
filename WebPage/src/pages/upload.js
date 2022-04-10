@@ -60,7 +60,7 @@ class Upload extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.my_pubkey.pubkey !== "" && JSON.stringify(prevProps.my_pubkey.pubkey) !== JSON.stringify(this.props.my_pubkey.pubkey)) {
-            this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
+            this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
                 .headers({
                     'pubkey': this.props.my_pubkey.pubkey
                 })
@@ -105,11 +105,11 @@ class Upload extends Component {
         this.setState({ loading: true });
         const mint_contract = new this.web3.eth.Contract(abi(), this.props.my_contracturl.contracturl, { from: this.props.my_pubkey.pubkey });
         mint_contract.methods.mintNFT(this.props.my_ipfslink.ipfslink.nft, (this.state.price * unitMap['ether']).toString()).send().on('transactionHash', (hash) => {
-            this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/pubDB')
+            this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/pubDB')
                 .headers({
                     'pubkey': this.props.my_pubkey.pubkey,
                     'data': JSON.stringify(this.props.my_nft.nft),
-                    'etherscan': `https://stardust-explorer.metis.io/tx/${hash}`,
+                    'etherscan': `https://scan-warringstakes.meter.io/tx/${hash}`,
                     'contract': this.props.my_contracturl.contracturl,
                     'aws': this.props.my_ipfslink.ipfslink.nftaws
                 })
@@ -117,7 +117,7 @@ class Upload extends Component {
                     if (res.error) throw new Error(res.error);
                     this.setState({
                         loading: false,
-                        finalUrl: `https://stardust-explorer.metis.io/tx/${hash}`
+                        finalUrl: `https://scan-warringstakes.meter.io/tx/${hash}`
                     });
                 });
         }).on('confirmation', () => { this.props.set_activetab_action(6) })
@@ -127,7 +127,7 @@ class Upload extends Component {
         return (
             <div className="App">
                 <Header />
-                <div className="body-style2" style={{ fontSize: "1.5rem" }} id="body-style">
+                <div className="body-style2" style={{ fontSize: "1.5rem" }}>
                     <div>
                         {
                             this.props.my_activetab.activetab === 0 &&
@@ -206,7 +206,7 @@ class Upload extends Component {
                             this.props.my_activetab.activetab === 2 &&
                             <div style={{ paddingTop: "5vh" }}>
                                 <div>
-                                    Deploy NFT contract on Metis.
+                                    Deploy NFT contract on Meter.
                                 </div>
                                 <br />
                                 <textarea id="upload1" style={{ fontSize: "1rem", width: "60vw", height: "40vh", overflowY: "scroll", overflowX: "scroll", resize: "none", color:"white",backgroundColor:"#1e1e1e", padding:"10px" }} value={content()} readOnly />
@@ -227,11 +227,11 @@ class Upload extends Component {
                                 <br />
                                 <br />
                                 <div>
-                                    Waiting for Metis network
+                                    Waiting for Meter Network
                                 </div>
                                 <br />
                                 <div>
-                                    <a href={`https://stardust-explorer.metis.io/address/${this.props.my_contracturl.contracturl}`} target="_blank" rel="noopener noreferrer">
+                                    <a href={`https://scan-warringstakes.meter.io/address/${this.props.my_contracturl.contracturl}`} target="_blank" rel="noopener noreferrer">
                                         {this.props.my_contracturl.contracturl}
                                     </a>
                                 </div>
@@ -240,7 +240,7 @@ class Upload extends Component {
                         {
                             this.props.my_activetab.activetab === 4 &&
                             <div style={{ paddingTop: "12vh" }}>
-                                <SimpleReactFileUpload url={"	https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/upload-NFT-Storage"} />
+                                <SimpleReactFileUpload url={"	https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/upload-NFT-Storage"} />
                             </div>
                         }
                         {
@@ -250,7 +250,7 @@ class Upload extends Component {
                                     <p />
                                     <LazyLoadImage className="quasarButton" style={{borderRadius: "10px"}} width="256" height="256" alt="NFT Loading..." src={this.props.my_ipfslink.ipfslink.nftaws} />
                                     <p />
-                                    <Input type="number" name="price" placeholder="Metis price" onChange={(event) => {
+                                    <Input type="number" name="price" placeholder="Meter price" onChange={(event) => {
                                         if (event.target.value >= 0.0001) {
                                             this.setState({ mintButton: false });
                                             this.setState({ price: event.target.value })
@@ -258,7 +258,7 @@ class Upload extends Component {
                                             this.setState({ mintButton: true });
                                         }
                                     }} />
-                                    {`Metis value: ${this.state.price}`}
+                                    {`Meter value: ${this.state.price}`}
                                     <p />
                                     <Button className="quasarButton" disabled={this.state.mintButton} id="upload3" color="primary" style={{ fontSize: "1.5rem", borderRadius: "10px", background: ` #000` }} onClick={() => {
                                         this.setState({ mintButton: true });
@@ -277,7 +277,7 @@ class Upload extends Component {
                                     <LazyLoadImage className="quasarButton" style={{borderRadius: "10px"}} width="400" height="400" alt="NFT Loading..." src={this.props.my_ipfslink.ipfslink.nftaws} />
                                 </div>
                                 <div style={{ paddingTop: "3vh" }}>
-                                    <Button className="quasarButton" style={{ borderRadius: "25px 0px 0px 25px", fontSize: "1.5rem", borderRight: "1px solid black", background: ` #000` }} onClick={() => window.open(this.state.finalUrl, "_blank")}>View on Metis Explorer</Button>
+                                    <Button className="quasarButton" style={{ borderRadius: "25px 0px 0px 25px", fontSize: "1.5rem", borderRight: "1px solid black", background: ` #000` }} onClick={() => window.open(this.state.finalUrl, "_blank")}>View on Meter Explorer</Button>
                                     {
                                         console.log(this.state.finalUrl)
                                     }

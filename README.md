@@ -5,7 +5,9 @@
 
 # NFT Quasar
 
-Welcome everyone, we are NFT Quasar
+Welcome everyone, we are NFT Quasar.
+
+<img src="./Images/logo.png">
 
 A platform and Marketplace where you can NFTize offline assets such as collectibles, sneakers, watches and more.
 
@@ -32,40 +34,43 @@ An NFT Marketplace but with a twist
 
 1. Check it out it is live: https://www.nftquasar.online/
 
-<img src="https://i.ibb.co/YZWb9r7/Screenshot-from-2021-12-08-00-30-49.png">
+### Main
 
-<img src="https://i.ibb.co/P4D6Gf6/wheel2.png">
+<img src="./Images/1.png">
+
+### Explorer
+
+<img src="./Images/2.png">
 
 ### 2. Mint your offline asset NFT
 
-<img src="https://i.ibb.co/0BN6pr2/wheel3.png">
+<img src="./Images/3.png">
 
 ### 3. Wait for it to be approved by a third party.
 
-<img src="https://i.ibb.co/G3jR9xJ/Pre-Approve.png">
+<img src="./Images/4.png">
 
 ### 4. Now you can scan it on the system!
 
-<img src="https://i.ibb.co/5xycyyP/lastwheel.png">
+<img src="./Images/5.png">
 
 ### Of course, as it is an NFT you'll know in its history where it has been and who is the real owner!
 
-
 Here is the system's Architecture:
 
-<img src="https://i.ibb.co/s2BMvM2/Esquema.png">
+<img src="./Images/6.png">
 
-Our webpage is made on React, the Metis Stardust testnet works as the main focus as it is the manager of smart contracts and EVM compatibility. In turn, the Metis RPC manages its interactions between smartcontracts and webpage, Metamask works as our way of signing said contracts and providing the way to mint NFT's. On the storage side we use IPFS/Filecoin in adition with NFT.storage to store our NFT data securely and resiliently and also we use some of their API's to call the CID back.
+Our webpage is made on React, the Meter testnet works as the main focus as it is the manager of smart contracts and EVM compatibility. In turn, the Meter RPC manages its interactions between smartcontracts and webpage, Metamask works as our way of signing said contracts and providing the way to mint NFT's. On the storage side we use IPFS/Filecoin in adition with NFT.storage to store our NFT data securely and resiliently and also we use some of their API's to call the CID back.
 
 # Technology stack
 
-## Metis
+## Meter
 
-The Metis RPC is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
+The [Meter RPC](https://rpctest.meter.io/) is the base for Minting, buying, trading and everything Smart Contracts on our platform. It bring us great EVM compatibility.
 
 <img src="https://i.ibb.co/GV8mQSB/contract.png">
 
-And YES everything is on the Stardust/Rinkerby testnet.
+And YES everything is on the Meter testnet.
 
 ## IPFS/Filecoin:
 
@@ -97,14 +102,14 @@ More details on: [Server](./Server/serverv3.js)
         }
         let metadata = await clientnft.store(premetadat)
 
-- To access this data we use a Metis RPC provider, obtaining the NFT IPFS URI directly from the Smart Contract, after that a simple get request will give us the data of the metadata.json.
+- To access this data we use a [Meter RPC](https://rpctest.meter.io/) provider, obtaining the NFT IPFS URI directly from the Smart Contract, after that a simple get request will give us the data of the metadata.json.
 
 More Details [Scan](./WebPage/src/pages/scan.js)
 
 
 - Here is a Screen shot of our NFT.Storage service
 
-<img src="https://i.ibb.co/pwxkPHC/image.png">
+<img src="./Images/7.png">
 
 ## Draft Budget
 
@@ -127,8 +132,8 @@ So, the plan for the initial phase would be to secure $50k USD whether it is thr
 
 ## What's Next for NFT Quasar
 
-Developing with Metis was easy enough as its EVM works with all the Ethereum-based channels, APIs and even other blockchains such as IPFS.
-We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank the Metis team for this opportunity and also the devs for their support on discord.
+Developing with Meter was easy enough as its EVM works with all the Ethereum-based channels, APIs and even other blockchains such as IPFS.
+We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank the Meter team for this opportunity and also the devs for their support on discord.
 
 # References
 

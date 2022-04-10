@@ -7,7 +7,7 @@ import { FaYoutube } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import ipfs from '../assets/IPFS.png';
-import polygon from '../assets/polygon.png';
+import meter from '../assets/meter.png';
 import moralis from '../assets/moralis.png';
 import { connect } from 'react-redux';
 
@@ -165,7 +165,7 @@ class Footer extends Component {
                 <div id="footer-div3" style={{ paddingBottom: "2vh" }}>
                     <Row>
                         <Col>
-                            Build on <img alt="imagens" src={polygon} height="20px" /> powered by<img alt="imagsens" src={ipfs} height="20px" /> bridged by <img alt="imagens" src={moralis} height="20px" />
+                            Build on <img alt="imagens" src={meter} height="36px" /> powered by<img alt="imagsens" src={ipfs} height="20px" />
                         </Col>
                         <Col>
                             <div style={{ textAlign: "end" }}>

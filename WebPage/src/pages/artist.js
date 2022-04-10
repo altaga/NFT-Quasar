@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import maticToken from "../assets/matic-token.png"
 import { connect } from 'react-redux';
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 function stringToLowerCase(str) {
   return str.toLowerCase();
@@ -36,7 +36,7 @@ class Artist extends Component {
   async componentDidMount() {
     const pub = stringToLowerCase(this.props.match.params.pub)
     this.updateData();
-    this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
+    this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getDB')
       .headers({
         'pubkey': pub
       })
@@ -79,7 +79,7 @@ class Artist extends Component {
 
   updateData() {
     const pub = stringToLowerCase(this.props.match.params.pub)
-    this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
+    this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getExtraData')
       .headers({
         'pubkey': pub,
         'id': 1000000
@@ -132,7 +132,7 @@ class Artist extends Component {
     else {
       temp = "0";
     }
-    this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
+    this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/pubExtraDataDB')
       .headers({
         'pubkey': pub,
         'id': '1000000',
@@ -160,7 +160,7 @@ class Artist extends Component {
                     this.props.my_pubkey.pubkey === this.props.match.params.pub &&
                     <Button className="quasarButton" disabled={!this.state.buttonDisabled} style={{ width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={this.toogleStateOrders}>{this.state.LabelOrder}</Button>
                   }
-                  <Button className="quasarButton" style={{ marginLeft: "10px", width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://stardust-explorer.metis.io/address/${this.props.match.params.pub}`, "_blank")}> View on Etherscan</Button>
+                  <Button className="quasarButton" style={{ marginLeft: "10px", width: "16vw", borderRadius: "10px", fontSize: "1.5rem", background: ` #000` }} onClick={() => window.open(`https://scan-warringstakes.meter.io/address/${this.props.match.params.pub}`, "_blank")}> View on Etherscan</Button>
                 </Col>
                 {
                   this.props.my_pubkey.pubkey === this.props.match.params.pub &&

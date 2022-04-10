@@ -5,10 +5,10 @@ import Header from '../components/header';
 import { abi } from '../contracts/nftContract';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardTitle, Col, Row } from 'reactstrap';
 import { FaChartArea, FaCircle, FaConnectdevelop } from 'react-icons/fa';
-import photon from '../assets/photon.png';
+import meterLogo from '../assets/meterLogo.png';
 
 const Web3 = require('web3')
-const dataweb3 = new Web3("https://stardust.metis.io/?owner=588");
+const dataweb3 = new Web3("https://rpctest.meter.io/");
 
 function sortBybrandA(array) {
   return array.sort(function (a, b) {
@@ -107,7 +107,7 @@ class Gallery extends Component {
   }
 
   async componentDidMount() {
-    this.unirest('GET', 'https://XXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
+    this.unirest('GET', 'https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/getFullDB')
       .end((res) => {
         if (res.error) throw new Error(res.error);
         if (res.body.length > 0) {
@@ -291,7 +291,7 @@ class Gallery extends Component {
                                 this.state.pric.reduce((a, b) => a + b, 0)
                               }
                               <>&nbsp;</>
-                              <img width="30px" src={photon}></img>
+                              <img width="30px" src={meterLogo}></img>
                             </div>
                           </Col>
                           <Col xs="1" />
@@ -359,7 +359,7 @@ class Gallery extends Component {
                                                 }
                                               </div>
                                               <>&nbsp;</>
-                                              <img width="30px" src={photon}></img>
+                                              <img width="30px" src={meterLogo}></img>
                                             </div>
                                           </CardSubtitle>
                                         </Col>
@@ -413,7 +413,7 @@ class Gallery extends Component {
                                                 }
                                               </div>
                                               <>&nbsp;</>
-                                              <img width="30px" src={photon}></img>
+                                              <img width="30px" src={meterLogo}></img>
                                             </div>
                                           </CardSubtitle>
                                         </Col>
