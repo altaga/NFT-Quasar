@@ -133,7 +133,7 @@ So, the plan for the initial phase would be to secure $50k USD whether it is thr
 ## What's Next for NFT Quasar
 
 Developing with Meter was easy enough as its EVM works with all the Ethereum-based channels, APIs and even other blockchains such as IPFS.
-We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. We thank the Meter team for this opportunity and also the devs for their support on discord.
+We would like to try a beta of this concept with real assets or collectibles in this case, but for that we would need much more support and capital. 
 
 # References
 
